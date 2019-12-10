@@ -26,7 +26,10 @@ public class PratoTipicoController {
 	@GetMapping("")
 	public String showUpdateForm(Model model) {
 		List<PratoTipico> pratosTipicos = new ArrayList<PratoTipico>();
+		
 		pratosTipicos = pratoTipicoRepository.findAll();
+		
+		model.addAttribute("versao", pratoTipicoRepository.getVersion());
 		model.addAttribute("pratosTipicos", pratosTipicos);
 		return "index";
 	}

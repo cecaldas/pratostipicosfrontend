@@ -32,5 +32,10 @@ public class PratoTipicoRepositoryRepositoryImpl implements PratoTipicoRepositor
 		return list;
 	}
 
+	@Override
+	public String getVersion() {
+		return "1.0.0";
+	}
+
 
 }

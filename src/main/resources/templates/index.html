@@ -40,6 +40,10 @@
 									</tr>
 								</tbody>
 							</table>
+							<td>
+							    <span th:if="${versao == '1.0.0'}">Versão 1</span>
+							    <span th:unless="${versao == '1.0.0'}">Versão 2</span>
+							</td>
 						</div>
 
 					</div>

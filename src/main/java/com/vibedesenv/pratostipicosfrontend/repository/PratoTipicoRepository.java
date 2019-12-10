@@ -7,5 +7,6 @@ import com.vibedesenv.pratostipicosfrontend.entity.PratoTipico;
 public interface PratoTipicoRepository{
     
     List<PratoTipico> findAll();
+    String getVersion();
     
 }
