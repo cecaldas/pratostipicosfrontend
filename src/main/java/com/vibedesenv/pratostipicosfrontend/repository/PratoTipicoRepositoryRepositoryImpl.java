@@ -1,10 +1,24 @@
 package com.vibedesenv.pratostipicosfrontend.repository;
 
-import java.math.BigDecimal;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.net.ssl.SSLContext;
+
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
 
 import com.vibedesenv.pratostipicosfrontend.entity.PratoTipico;
 
@@ -14,28 +28,54 @@ public class PratoTipicoRepositoryRepositoryImpl implements PratoTipicoRepositor
 	@Override
 	public List<PratoTipico> findAll() {
 		List<PratoTipico> list = new ArrayList<PratoTipico>();
-		
-		PratoTipico prato1 = new PratoTipico();
-		prato1.setId(1);
-		prato1.setNome("nome");
-		prato1.setDescricao("descricao do prato");
-		prato1.setValor(new BigDecimal(20.55));
-		list.add(prato1);
-		
-		PratoTipico prato2 = new PratoTipico();
-		prato2.setId(2);
-		prato2.setNome("nome");
-		prato2.setDescricao("descricao do prato com mais detalhes");
-		prato2.setValor(new BigDecimal(.5));
-		list.add(prato2);
-		
-		return list;
+
+		try {
+			RestTemplate restTemplate = getRestTemplateignoreSsl();
+
+			ResponseEntity<PratoTipico[]> response = restTemplate.getForEntity("https://archtidevops.com/pratosTipicos/todos", PratoTipico[].class);
+
+			Iterator iterator = Arrays.asList(response.getBody()).iterator();
+
+			while (iterator.hasNext()) {
+				PratoTipico prato = (PratoTipico) iterator.next();
+				prato.setUrl("tacaca.png");
+				list.add(prato);
+			}
+
+			return list;
+		} catch (Exception e) {
+			throw new RuntimeException("Erro ao conectar");
+		}
+	}
+
+	private RestTemplate getRestTemplateignoreSsl() throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+		TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
+
+		SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
+
+		SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+
+		CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
+
+		HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+
+		requestFactory.setHttpClient(httpClient);
+
+		RestTemplate restTemplate = new RestTemplate(requestFactory);
+		return restTemplate;
 	}
 
 	@Override
 	public String getVersion() {
-		return "1.0.0";
-	}
+		RestTemplate restTemplate;
+		try {
+			restTemplate = getRestTemplateignoreSsl();
+			ResponseEntity<String> response = restTemplate.getForEntity("https://archtidevops.com/pratosTipicos/versao", String.class);
+			return response.getBody();
+		} catch (Exception e) {
+			throw new RuntimeException("erro getVersion");
+		}
 
+	}
 
 }

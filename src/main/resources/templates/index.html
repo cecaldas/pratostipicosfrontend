@@ -19,7 +19,7 @@
 <body>
 
   <!-- site 1 -->
-  <section class="menu_1">
+  <section class="menu_1" th:if="${versao == '1.0.0'}">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -33,7 +33,7 @@
       </div>
     </div>
   </section>
-  <section class="main_1">
+  <section class="main_1" th:if="${versao == '1.0.0'}">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -47,81 +47,28 @@
           </div>
         </div>
       </div>
-      <div class="produto">
+      
+      <div th:each="prato : ${pratosTipicos}" class="produto">
         <div class="col-md-1">
           <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
+              <img th:src="@{${'/images/' + prato.url}}"/>              
           </div>
         </div>
         <div class="col-md-10">
           <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+	        <span th:text="${prato.nome}">Açai com farinha de tapioca</span>
+	        <p th:text="${prato.descricao}">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
           </div>
         </div>
         <div class="col-md-1">
-          <div class="valor">
+        <div class="valor" th:text="${#numbers.formatDecimal(prato.preco,1,2,'COMMA')}">
             R$ 20
           </div>
         </div>
-      </div><!-- fim produto -->
-      <div class="produto">
-        <div class="col-md-1">
-          <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="valor">
-            R$ 20
-          </div>
-        </div>
-      </div><!-- fim produto -->
-      <div class="produto">
-        <div class="col-md-1">
-          <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="valor">
-            R$ 20
-          </div>
-        </div>
-      </div><!-- fim produto -->
-      <div class="produto">
-        <div class="col-md-1">
-          <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="valor">
-            R$ 20
-          </div>
-        </div>
-      </div><!-- fim produto -->
+      </div><!-- fim produto -->      
     </div>
   </section>
-  <section class="footer_1">
+  <section class="footer_1" th:if="${versao == '1.0.0'}">
     <div class="container">
       <div class="row">
           <div class="col-md-6">
@@ -140,7 +87,7 @@
   <!-- fim site 1 -->
 
   <!-- site 2 -->
-  <section class="menu_2">
+  <section class="menu_2" th:if="${versao == '2.0.0'}">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -154,7 +101,8 @@
       </div>
     </div>
   </section>
-  <section class="main_2">
+  <section class="main_2" th:if="${versao == '2.0.0'}">
+  
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -168,81 +116,28 @@
           </div>
         </div>
       </div>
-      <div class="produto">
+ 
+      <div th:each="prato : ${pratosTipicos}" class="produto">
         <div class="col-md-1">
           <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
+               <img th:src="@{${'/images/' + prato.url}}"/>
           </div>
         </div>
         <div class="col-md-10">
           <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+	        <span th:text="${prato.nome}">Açai com farinha de tapioca</span>
+	        <p th:text="${prato.descricao}">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
           </div>
         </div>
         <div class="col-md-1">
-          <div class="valor">
+        <div class="valor" th:text="${#numbers.formatDecimal(prato.preco,1,2,'COMMA')}">
             R$ 20
           </div>
         </div>
-      </div><!-- fim produto -->
-      <div class="produto">
-        <div class="col-md-1">
-          <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="valor">
-            R$ 20
-          </div>
-        </div>
-      </div><!-- fim produto -->
-      <div class="produto">
-        <div class="col-md-1">
-          <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="valor">
-            R$ 20
-          </div>
-        </div>
-      </div><!-- fim produto -->
-      <div class="produto">
-        <div class="col-md-1">
-          <div class="img-produto">
-              <img th:src="@{/images/acai.png}">
-          </div>
-        </div>
-        <div class="col-md-10">
-          <div class="descricao-produto">
-            <span>Açai com farinha de tapioca</span>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="valor">
-            R$ 20
-          </div>
-        </div>
-      </div><!-- fim produto -->
+      </div><!-- fim produto --> 
     </div>
   </section>
-  <section class="footer_2">
+  <section class="footer_2" th:if="${versao == '2.0.0'}">
     <div class="container">
       <div class="row">
           <div class="col-md-6">

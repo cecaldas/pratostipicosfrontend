@@ -2,6 +2,9 @@ package com.vibedesenv.pratostipicosfrontend.entity;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PratoTipico {
 
 	private Long id;
@@ -10,8 +13,8 @@ public class PratoTipico {
 
 	private String descricao;
 
-	private BigDecimal valor;
-	
+	private BigDecimal preco;
+
 	private String url;
 
 	public PratoTipico() {
@@ -41,12 +44,12 @@ public class PratoTipico {
 		this.descricao = descricao;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	public BigDecimal getPreco() {
+		return preco;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 
 	public void setId(Long id) {
