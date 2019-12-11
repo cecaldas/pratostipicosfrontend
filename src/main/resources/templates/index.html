@@ -13,43 +13,252 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
 </head>
 <body>
-	<div class="container my-2">
-		<div class="card">
-			<div class="card-body">
-				<div th:switch="${pratosTipicos}" class="container my-5">
-					<div class="col-md-10">
-						<div th:case="*">
-							<table class="table table-striped table-responsive-md">
-								<thead>
-									<tr>
-										<th>Nome</th>
-										<th>Descrição</th>
-										<th>Preço</th>
-										<th>Foto</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="prato : ${pratosTipicos}">
-										<td th:text="${prato.nome}"></td>
-										<td th:text="${prato.descricao}"></td>
-										<td th:text="${#numbers.formatDecimal(prato.valor,1,2,'COMMA')}"></td>
-										<td><img width="220px" height="70px" th:src="@{/images/instagram.png}"/></td> 
-									</tr>
-								</tbody>
-							</table>
-							<td>
-							    <span th:if="${versao == '1.0.0'}">Versão 1</span>
-							    <span th:unless="${versao == '1.0.0'}">Versão 2</span>
-							</td>
-						</div>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <!-- site 1 -->
+  <section class="menu_1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img th:src="@{/images/tipicos-do-para.png}" alt="logo comidas tipicas">
+        </div>
+        <div class="col-md-6">
+          <span class="bars">
+            <i class="fas fa-bars"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="main_1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="caminho">
+            <p><span class="active">Início</span> > Mais pedidos</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="titulo">
+            <p>MAIS PEDIDOS</p>
+          </div>
+        </div>
+      </div>
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+    </div>
+  </section>
+  <section class="footer_1">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+            <span class="versao">
+              TÍPICOS DO PARÁ:
+              <span th:if="${versao == '1.0.0'}">V1.0</span>
+              <span th:unless="${versao == '1.0.0'}">V2.0</span>
+            </span>
+          </div>
+          <div class="col-md-6">
+              <img class="logo-mono-branca" th:src="@{/images/logo-mono-branco.png}" alt="logo vibe">
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- fim site 1 -->
+
+  <!-- site 2 -->
+  <section class="menu_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img th:src="@{/images/tipicos-do-para.png}" alt="logo comidas tipicas">
+        </div>
+        <div class="col-md-6">
+          <span class="bars">
+            <i class="fas fa-bars"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="main_2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="caminho">
+            <p><span class="active">Início</span> > Mais pedidos</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="titulo">
+            <p>MAIS PEDIDOS</p>
+          </div>
+        </div>
+      </div>
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+      <div class="produto">
+        <div class="col-md-1">
+          <div class="img-produto">
+              <img th:src="@{/images/acai.png}">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="descricao-produto">
+            <span>Açai com farinha de tapioca</span>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.</p>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="valor">
+            R$ 20
+          </div>
+        </div>
+      </div><!-- fim produto -->
+    </div>
+  </section>
+  <section class="footer_2">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+            <span class="versao">
+              TÍPICOS DO PARÁ:
+              <span th:if="${versao == '1.0.0'}">V1.0</span>
+              <span th:unless="${versao == '1.0.0'}">V2.0</span>
+            </span>
+          </div>
+          <div class="col-md-6">
+              <img class="logo-mono-branca" th:src="@{/images/logo-padrao.png}" alt="logo vibe">
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- fim site 2 -->
+  
 </body>
 </html>
